@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <script>
+    var url = "http://192.168.100.2:8091/POST/NutriNET/Cliente";
+    var data = {};
+    data.nombre = "Walter";
+    data.apellidos = "Blanco";
+    data.nombre_usuario = "Heisenberg";
+    data.correo_electronico = "heisenberg@gmail.com";
+    data.contrasena = "nosoyHeisenberg";
+
+    var json = JSON.stringify(data);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.send(json);
+
+    
+    var url2 = "http://192.168.100.2:8091/GET/NutriNET/Cliente";
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", url2, true);
+    xmlhttp.onreadystatechange = function() {
+      if(xmlhttp.readyState ===4 && xmlhttp.status ===200){
+        var client = JSON.parse(xmlhttp.responseText);
+        for (let i = 0; i < client.length; i++) {
+          if (client[i].nombre_usuario == data.nombre_usuario) {
+            alert("Registro exitoso con id de Cliente: " + client[i].id);
+          } 
+        }
+
+      }
+    };
+    xmlhttp.send();
+
+  </script>
+</head>
+
+<body>
+  <H1>Al abrir el html se inserta el nuevo registro automaticamente </H1>
+  <h3>
+    nombre = "Walter"<br/>
+    apellidos = "Blanco"<br/>
+    nombre_usuario = "Heisenberg"<br/>
+    correo_electronico = "heisenberg@gmail.com"<br/>
+    contrasena = "nosoyHeisenberg"<br/>
+  </h3>
+</body>
+
+</html>

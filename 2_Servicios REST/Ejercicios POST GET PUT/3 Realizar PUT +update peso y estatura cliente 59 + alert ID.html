@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <script>
+    // Update a user
+    var url = "http://192.168.100.2:8091/PUT/NutriNET/Cliente/59";
+
+    var data = {};
+    data.estatura = "2.70";
+    data.peso = "70";
+    var json = JSON.stringify(data);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", url, true);
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xhr.onload = function () {
+      var users = JSON.parse(xhr.responseText);
+      if (xhr.readyState == 4 && xhr.status == "200") {
+        console.table(users);
+      } else {
+        console.error(users);
+      }
+    }
+    xhr.send(json);
+    alert("Modificado los campos: \nestatura = 2.70 \npeso = 70");
+
+
+  </script>
+</head>
+
+<body>
+  <H1>Datos a modificar del cliente 59. Se modifica automaticamente al abrir el html</H1>
+  <h3>
+    estatura = "1.80"<br />
+    peso = "60"<br /><br />
+    A<br /><br />
+    estatura = "2.70"<br />
+    peso = "70"<br />
+  </h3>
+</body>
+
+</html>
