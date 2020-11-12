@@ -28,6 +28,16 @@ public class ClientController {
 		return clientService.getClient(id);
 	}
 	
+	@RequestMapping("/login/{u}/{c}")
+	public Boolean getTopic2(@PathVariable("u") String u, 
+			@PathVariable("c") String c) {
+		Boolean resp= false;
+		if(c.equals("123") && u.contains("usuario")) {
+			resp=true;
+		}
+		return resp;
+	}
+	
 	@RequestMapping(method = RequestMethod.POST, value = "/POST/NutriNET/Cliente")
 	public void addTopic(@RequestBody Client c) {
 		clientService.addClient(new Client(c.getNombre(),c.getApellidos(),c.getNombre_usuario(),c.getCorreo_electronico(),c.getContrasena()));

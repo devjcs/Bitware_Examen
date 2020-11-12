@@ -2,7 +2,7 @@
 
 <head>
   <script>
-    var url = "http://192.168.100.2:8091/POST/NutriNET/Cliente";
+    var url = "http://192.168.1.67:8091/POST/NutriNET/Cliente";
     var data = {};
     data.nombre = "Walter";
     data.apellidos = "Blanco";
@@ -18,7 +18,7 @@
     xhr.send(json);
 
     
-    var url2 = "http://192.168.100.2:8091/GET/NutriNET/Cliente";
+    var url2 = "http://192.168.1.67:8091/GET/NutriNET/Cliente";
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", url2, true);
     xmlhttp.onreadystatechange = function() {
